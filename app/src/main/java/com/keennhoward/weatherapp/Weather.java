@@ -2,7 +2,17 @@ package com.keennhoward.weatherapp;
 
 import com.google.gson.annotations.SerializedName;
 
-public class weather {
+public class Weather {
+
+    @Override
+    public String toString() {
+        return "Weather{" +
+                "id=" + id +
+                ", main='" + main + '\'' +
+                ", description='" + description + '\'' +
+                ", icon='" + icon + '\'' +
+                '}';
+    }
 
     @SerializedName("id")
     private int id;
