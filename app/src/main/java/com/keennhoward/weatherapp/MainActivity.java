@@ -34,10 +34,14 @@ public class MainActivity extends AppCompatActivity {
         owmApi = retrofit.create(OwmApi.class);
 
         //getWeatherWithCity("Manila&appid=9e966537e45e8f205eea944edbef0264");
-        getWeatherWithCity("Manila", "9e966537e45e8f205eea944edbef0264");
+        //getWeatherWithCity("Manila", "9e966537e45e8f205eea944edbef0264");
+        Requests requests = new Requests(owmApi);
+        requests.getWeatherWithCity("Manila", "9e966537e45e8f205eea944edbef0264");
+        //txtResult.setText(weathers.toString());
+
     }
 
-
+/*
     public void getWeatherWithCity(String city,String key){
 
        Call<CurrentWeather> call = owmApi.getWeather(city, key);
@@ -60,5 +64,5 @@ public class MainActivity extends AppCompatActivity {
                 txtResult.setText(t.getMessage());
            }
        });
-    }
+    } */
 }
