@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         //getWeatherWithCity("Manila&appid=9e966537e45e8f205eea944edbef0264");
         //getWeatherWithCity("Manila", "9e966537e45e8f205eea944edbef0264");
-        Requests requests = new Requests(owmApi);
+        Requests requests = new Requests(owmApi, txtResult);
         requests.getWeatherWithCity("Manila", "9e966537e45e8f205eea944edbef0264");
         //txtResult.setText(weathers.toString());
 
