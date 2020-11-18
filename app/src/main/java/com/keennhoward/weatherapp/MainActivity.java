@@ -38,12 +38,6 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         owmApi = retrofit.create(OwmApi.class);
 
-        //getWeatherWithCity("Manila&appid=9e966537e45e8f205eea944edbef0264");
-        //getWeatherWithCity("Manila", "9e966537e45e8f205eea944edbef0264");
-        //Requests requests = new Requests(owmApi, txtResult);
-        //requests.getWeatherWithCity("Manila", API_KEY);
-        //txtResult.setText(weathers.toString());
-
         cityEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {

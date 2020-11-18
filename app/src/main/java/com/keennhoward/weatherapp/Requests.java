@@ -30,12 +30,21 @@ public class Requests {
         call.enqueue(new Callback<CurrentWeather>() {
             @Override
             public void onResponse(Call<CurrentWeather> call, Response<CurrentWeather> response) {
+                if(response.isSuccessful()) {
+                    Log.d("response", response.body().toString());
+                    CurrentWeather currentWeather = response.body();
+                    weather = currentWeather.getWeather();
+                    textView.setText(weather.toString());
+                    Log.d("weather", weather.toString());
+                }else{
+                    try {
+                        textView.setText("Error: "+response.message());
 
-                Log.d("response", response.body().toString());
-                CurrentWeather currentWeather = response.body();
-                weather = currentWeather.getWeather();
-                textView.setText(weather.toString());
-                Log.d("weather", weather.toString());
+                    }catch(Exception e){
+                        textView.setText("Unknown Error");
+                    }
+
+                }
             }
 
             @Override
