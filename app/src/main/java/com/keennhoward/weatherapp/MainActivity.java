@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.List;
@@ -17,15 +20,17 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
 
     TextView txtResult;
-
+    EditText cityEditText;
     OwmApi owmApi;
 
+    private static final String API_KEY = "9e966537e45e8f205eea944edbef0264";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         txtResult = findViewById(R.id.txtResult);
+        cityEditText = findViewById(R.id.cityEditText);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.openweathermap.org")
@@ -35,9 +40,23 @@ public class MainActivity extends AppCompatActivity {
 
         //getWeatherWithCity("Manila&appid=9e966537e45e8f205eea944edbef0264");
         //getWeatherWithCity("Manila", "9e966537e45e8f205eea944edbef0264");
-        Requests requests = new Requests(owmApi, txtResult);
-        requests.getWeatherWithCity("Manila", "9e966537e45e8f205eea944edbef0264");
+        //Requests requests = new Requests(owmApi, txtResult);
+        //requests.getWeatherWithCity("Manila", API_KEY);
         //txtResult.setText(weathers.toString());
+
+        cityEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if(actionId == EditorInfo.IME_ACTION_SEARCH){
+                    Log.d("search", cityEditText.getText().toString());
+                    Requests requests = new Requests(owmApi, txtResult);
+                    requests.getWeatherWithCity(cityEditText.getText().toString(), API_KEY);
+                    return true;
+                }
+                return false;
+            }
+        });
+
 
     }
 
