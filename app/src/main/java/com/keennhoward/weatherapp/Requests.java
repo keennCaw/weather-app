@@ -3,6 +3,9 @@ package com.keennhoward.weatherapp;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.keennhoward.weatherapp.data.CurrentWeather;
+import com.keennhoward.weatherapp.data.Weather;
+
 import java.util.List;
 
 import retrofit2.Call;

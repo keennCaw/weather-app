@@ -1,4 +1,4 @@
-package com.keennhoward.weatherapp;
+package com.keennhoward.weatherapp.data;
 
 import com.google.gson.annotations.SerializedName;
 
